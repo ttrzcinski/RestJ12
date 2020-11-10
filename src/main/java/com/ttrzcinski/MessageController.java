@@ -7,8 +7,8 @@ import io.micronaut.http.annotation.Post;
 
 import javax.validation.Valid;
 
-import org.joda.time.DateTime;
-
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -52,7 +52,7 @@ public class MessageController {
                 messageSaved = new MessageSaved(message, theID);
                 //messageSaved.setMagicNumber(UUID.randomUUID().timestamp());
                 MessageSaved oldValue = MessageController.instRepo.put(messageSaved.getID(), messageSaved);
-                if (oldValue == null) { 
+                if (oldValue == null) {
                     break;
                 }
             } catch (Exception exc_1) {
@@ -102,10 +102,10 @@ public class MessageController {
                 .count();
         System.out.printf("Sent %d messages.", counter);
         // Remove those older, than 5 minutes
-        DateTime deadline = DateTime.now().minusMinutes(MessageController.DELTA_IN_MINUTES);
+        LocalDateTime deadline = LocalDateTime.now().minusMinutes(MessageController.DELTA_IN_MINUTES);
         counter = instRepo.size();
         MessageController.instRepo.entrySet().stream()
-                .filter(e -> e.getValue().getCreatedDate() < deadline.getMillis())
+                .filter(e -> (e.getValue().getCreatedDate().toEpochSecond(ZoneOffset.UTC) < deadline.toEpochSecond(ZoneOffset.UTC)))
                 .forEach(e -> MessageController.instRepo.remove(e.getKey()));
         counter -= MessageController.instRepo.size();
         System.out.printf("Dropped %d messages.", counter);
