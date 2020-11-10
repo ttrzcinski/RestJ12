@@ -27,3 +27,4 @@ bin/*
 build/*
 target/*
 out/*
+.gradle/*
