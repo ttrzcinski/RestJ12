@@ -1,0 +1,14 @@
+applicationType: default
+defaultPackage: com.ttrzcinski
+testFramework: junit
+sourceLanguage: java
+# UNREM FOR GRADLE BUILD
+# buildTool: gradle
+# features: [annotation-api, app-name, aws-lambda, gradle, java, java-application, junit, logback, readme, shade, yaml]
+# UNREM FOR MAVEN BUILD
+applicationType: default
+defaultPackage: com.ttrzcinski
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, aws-lambda, cassandra, docker, java, java-application, junit, logback, maven, readme, shade, yaml]
