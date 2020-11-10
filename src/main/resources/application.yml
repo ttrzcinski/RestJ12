@@ -1,0 +1,19 @@
+micronaut:
+  application:
+    name: complete
+# LocalHost
+#  cassandra:
+#    default:
+#      clusterName: '"myCluster"'
+#      contactPoint: '"localhost"'
+#      port: 9042
+#      maxSchemaAgreementWaitSeconds: 20
+#      ssl: true
+# Remote - Astra
+  cassandra:
+    default:
+      clusterName: '"CassMessages"'
+      contactPoint: '"localhost"'
+      port: 9042
+      maxSchemaAgreementWaitSeconds: 20
+      ssl: true
