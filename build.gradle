@@ -1,0 +1,36 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "6.1.0"
+    id "io.micronaut.application" version '1.0.5'
+}
+
+version "0.2"
+group "com.ttrzcinski"
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+micronaut {
+    runtime "lambda"
+    testRuntime "junit5"
+    processing {
+        incremental true
+        annotations "com.ttrzcinski.*"
+    }
+}
+
+dependencies {
+    implementation("io.micronaut:micronaut-validation")
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("javax.annotation:javax.annotation-api")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    testImplementation("io.micronaut:micronaut-http-client")
+}
+
+mainClassName = "com.ttrzcinski.Application"
+// mainClassName = "com.ttrzcinski.TheHandler"
+java {
+    sourceCompatibility = JavaVersion.toVersion('11')
+    targetCompatibility = JavaVersion.toVersion('11')
+}
