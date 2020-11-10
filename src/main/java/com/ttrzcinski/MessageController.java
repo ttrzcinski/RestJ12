@@ -7,8 +7,7 @@ import io.micronaut.http.annotation.Post;
 
 import javax.validation.Valid;
 
-//import org.joda.time.DateTime;
-import java.time.LocalDateTime;
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,6 @@ public class MessageController {
         }
     }
 
-    // TODO CHANGE TO POST /api/message
     @Post(uri = "/api/message")
     public MessageSaved save(@Valid @Body Message message) {
         // Book some empty ID
@@ -65,7 +63,6 @@ public class MessageController {
         return messageSaved;
     }
 
-    // TODO CHANGE TO GET /api/messages/{email}
     @Get(uri = "/api/messages/{email}")
     public List<MessageSaved> readEmails(String email) {
         // Check, if given email has value
@@ -89,7 +86,6 @@ public class MessageController {
         return results;
     }
 
-    // TODO CHANGE TO POST /api/send
     @Post(uri = "/api/send")
     public void send() {
         // Send messages away
@@ -106,7 +102,7 @@ public class MessageController {
                 .count();
         System.out.printf("Sent %d messages.", counter);
         // Remove those older, than 5 minutes
-        LocalDateTime deadline = LocalDateTime.now().minusMinutes(MessageController.DELTA_IN_MINUTES);
+        DateTime deadline = DateTime.now().minusMinutes(MessageController.DELTA_IN_MINUTES);
         counter = instRepo.size();
         MessageController.instRepo.entrySet().stream()
                 .filter(e -> e.getValue().getCreatedDate() < deadline.getMillis())
