@@ -1,7 +1,3 @@
-## RestJ11
-Java 11 Rest API with Cassandra DB - doesn't use Spring nor Spring Boot.
-
-
 ## Handler
 
 [AWS Lambda Handler](https://docs.aws.amazon.com/lambda/latest/dg/java-handler.html)

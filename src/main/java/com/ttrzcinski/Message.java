@@ -5,8 +5,8 @@ import io.micronaut.core.annotation.Introspected;
 import javax.validation.constraints.NotBlank;
 
 /**
- * Represents a message as newly added E-amil message with values To:, Title:, </br>
- * Content: and Magicn Number.
+ * Represents a message as newly added E-mail message with values Email:, Title:, </br>
+ * Content: and Magic Number.
  */
 @Introspected
 public class Message {

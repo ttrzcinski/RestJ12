@@ -7,7 +7,7 @@ import io.micronaut.http.annotation.Post;
 
 import javax.validation.Valid;
 
-import org.joda.time.DateTime;
+import java.time.LocalDateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,10 +102,10 @@ public class MessageController {
                 .count();
         System.out.printf("Sent %d messages.", counter);
         // Remove those older, than 5 minutes
-        DateTime deadline = DateTime.now().minusMinutes(MessageController.DELTA_IN_MINUTES);
+        LocalDateTime deadline = LocalDateTime.now().minusMinutes(MessageController.DELTA_IN_MINUTES);
         counter = instRepo.size();
         MessageController.instRepo.entrySet().stream()
-                .filter(e -> e.getValue().getCreatedDate() < deadline.getMillis())
+                .filter(e -> e.getValue().getCreatedDate().isBefore(deadline))
                 .forEach(e -> MessageController.instRepo.remove(e.getKey()));
         counter -= MessageController.instRepo.size();
         System.out.printf("Dropped %d messages.", counter);

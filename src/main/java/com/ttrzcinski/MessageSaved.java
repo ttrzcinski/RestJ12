@@ -5,7 +5,7 @@ import io.micronaut.core.annotation.Introspected;
 
 import javax.validation.constraints.NotBlank;
 
-import org.joda.time.DateTime;
+import java.time.LocalDateTime;
 
 @Introspected
 public class MessageSaved {
@@ -36,7 +36,7 @@ public class MessageSaved {
 
     @NonNull
     @NotBlank
-    private DateTime instDateTime;
+    private LocalDateTime instDateTime;
 
     public MessageSaved() {
         this.instSent = false;
@@ -49,7 +49,7 @@ public class MessageSaved {
         this.instContent = message.getContent();
         this.instMagicNumber = message.getMagicNumber();
         this.instID = ID;
-        this.instDateTime = DateTime.now().getMillis();
+        this.instDateTime = LocalDateTime.now();
     }
 
     @NonNull
@@ -107,11 +107,11 @@ public class MessageSaved {
     }
 
     @NonNull
-    public DateTime getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return this.instDateTime;
     }
 
-    public void setCreatedDate(@NonNull DateTime dateTime) {
+    public void setCreatedDate(@NonNull LocalDateTime dateTime) {
         this.instDateTime = dateTime;
     }
 }
