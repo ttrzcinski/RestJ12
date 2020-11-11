@@ -9,6 +9,9 @@ unzip -p build/distributions/complete-shadow-0.2.zip complete-shadow-0.2/lib/com
 # echo "Will now copy it for docker"
 # cp build/distributions/complete-0.2.zip target/RestJ11-0.2.jar
 echo "Will now dockerize it."
-sh gradlew dockerfile
-sh gradlew dockerBuild
+# sh gradlew dockerfile
+docker build -t microlambda0.2 .
+# sh gradlew dockerBuild
+# docker run -t microlambda0.2
+docker run --rm -p 8080:8080 microlambda0.2
 echo "DONE"

@@ -23,7 +23,7 @@ micronaut {
 }
 
 dependencies {
-    implementation("io.micronaut:micronaut-http-server")    
+    // implementation("io.micronaut:micronaut-http-server")    
     implementation("io.micronaut:micronaut-http-server-netty")
     implementation("io.micronaut:micronaut-validation")
     implementation("io.micronaut:micronaut-runtime")
