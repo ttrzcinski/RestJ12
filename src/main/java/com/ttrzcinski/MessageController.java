@@ -8,7 +8,6 @@ import io.micronaut.http.annotation.Post;
 import javax.validation.Valid;
 
 import java.time.LocalDateTime;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -52,7 +51,7 @@ public class MessageController {
                 messageSaved = new MessageSaved(message, theID);
                 //messageSaved.setMagicNumber(UUID.randomUUID().timestamp());
                 MessageSaved oldValue = MessageController.instRepo.put(messageSaved.getID(), messageSaved);
-                if (oldValue == null) { 
+                if (oldValue == null) {
                     break;
                 }
             } catch (Exception exc_1) {
