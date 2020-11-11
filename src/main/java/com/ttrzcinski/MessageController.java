@@ -70,7 +70,7 @@ public class MessageController {
             System.err.println("E-mail address was not provided."); // 204 ?
             return results;
         }
-        // TODO CHECK EMAIL PATTERN
+        // Checking E-mail pattern
         if (email.contains("@") && email.length() < 3) {
             System.err.println("E-mail address is malformed."); // 204 ?
             return results;
@@ -99,7 +99,7 @@ public class MessageController {
                 .map(messageSaved -> MessageController.instRepo.remove(messageSaved))
                 .filter(Objects::nonNull)
                 .count();
-        System.out.printf("Sent %d messages.", counter);
+        System.out.printf("Sent %d messages. ", counter);
         // Remove those older, than 5 minutes
         LocalDateTime deadline = LocalDateTime.now().minusMinutes(MessageController.DELTA_IN_MINUTES);
         counter = instRepo.size();
@@ -107,6 +107,6 @@ public class MessageController {
                 .filter(e -> e.getValue().getCreatedDate().isBefore(deadline))
                 .forEach(e -> MessageController.instRepo.remove(e.getKey()));
         counter -= MessageController.instRepo.size();
-        System.out.printf("Dropped %d messages.", counter);
+        System.out.printf("Dropped %d messages.%n", counter);
     }
 }
