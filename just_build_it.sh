@@ -1,4 +1,8 @@
 #!/bin/bash
+# Any error is a show stopper
+set -e
+# Variables
+DOCKER_NAME="microlambda0.2"
 echo "Will now build that Lambda."
 sh gradlew assemble
 # sh gradlew clean build test check
@@ -10,8 +14,7 @@ unzip -p build/distributions/complete-shadow-0.2.zip complete-shadow-0.2/lib/com
 # cp build/distributions/complete-0.2.zip target/RestJ11-0.2.jar
 echo "Will now dockerize it."
 # sh gradlew dockerfile
-docker build -t microlambda0.2 .
+docker build -t "$DOCKER_NAME" .
 # sh gradlew dockerBuild
-# docker run -t microlambda0.2
-docker run --rm -p 8080:8080 microlambda0.2
+docker run --rm -p 8080:8080 "$DOCKER_NAME"
 echo "DONE"
