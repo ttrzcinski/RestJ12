@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
  * Content: and Magic Number.
  */
 @Introspected
-public class Message {
+public class Message implements IMessage {
 
     @NonNull
     @NotBlank

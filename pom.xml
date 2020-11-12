@@ -19,6 +19,7 @@
     <exec.mainClass>io.micronaut.function.aws.runtime.MicronautLambdaRuntime</exec.mainClass>
     <datastax.java.driver.version>4.9.0</datastax.java.driver.version>
     <maven.compiler>3.8.1</maven.compiler>
+    <ses.version>1.11.285</ses.version> <!-- 1.11.898 -->
   </properties>
 
     <repositories>
@@ -45,6 +46,13 @@
             <groupId>com.datastax.oss</groupId>
             <artifactId>java-driver-core</artifactId>
             <version>${datastax.java.driver.version}</version>
+        </dependency>
+        <!-- To send E-mail -->
+        <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-ses -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-ses</artifactId>
+            <version>${ses.version}</version>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
