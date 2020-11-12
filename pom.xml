@@ -17,7 +17,7 @@
     <release.version>12</release.version>
     <micronaut.version>2.1.3</micronaut.version>
     <exec.mainClass>io.micronaut.function.aws.runtime.MicronautLambdaRuntime</exec.mainClass>
-    <datastax.java.driver.version>4.9.0</datastax.java.driver.version>
+    <datastax.java.driver.version>4.9.0</datastax.java.driver.version>  <!-- 4.8.0 -->
     <maven.compiler>3.8.1</maven.compiler>
   </properties>
 
@@ -43,9 +43,25 @@
         <!-- To connect to Cassandra -->
         <dependency>
             <groupId>com.datastax.oss</groupId>
+            <artifactId>java-driver-query-builder</artifactId>
+            <version>${datastax.java.driver.version}</version>
+        </dependency>      
+        <dependency>
+            <groupId>com.datastax.oss</groupId>
+            <artifactId>java-driver-mapper-processor</artifactId>
+            <version>${datastax.java.driver.version}</version>
+        </dependency> 	
+        <dependency>
+            <groupId>com.datastax.oss</groupId>
+            <artifactId>java-driver-mapper-runtime</artifactId>
+            <version>${datastax.java.driver.version}</version>
+        </dependency> 
+        <dependency>
+            <groupId>com.datastax.oss</groupId>
             <artifactId>java-driver-core</artifactId>
             <version>${datastax.java.driver.version}</version>
         </dependency>
+        <!-- Web API -->
         <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-inject</artifactId>
