@@ -22,3 +22,4 @@ sh test_it.sh
 
 ## Authors
 Project Starter: [Tomasz Trzciński](mailto:trzcinski.tomasz.1988@gmail.com)
+Security: [Snyk](https://github.com/snyk-bot)
