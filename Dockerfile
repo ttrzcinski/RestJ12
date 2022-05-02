@@ -1,4 +1,4 @@
-FROM openjdk:14-alpine
+FROM openjdk:19-ea-16-slim
 RUN apk add --no-cache maven
 COPY target/RestJ11-*.jar RestJ11.jar
 EXPOSE 8080
